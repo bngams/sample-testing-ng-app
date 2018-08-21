@@ -1,0 +1,7 @@
+#team-form {
+    width: fit-content;
+    margin: auto;
+}
+#team-form .mat-form-field {
+    margin: 15px;
+}

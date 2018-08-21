@@ -1,0 +1,16 @@
+{
+    "teams": [
+        {
+            "id": 1,
+            "country": "France",
+            "slogan": "Allez les bleus!",
+            "img": ""
+        },
+        {
+            "id": 2,
+            "country": "Croatie",
+            "slogan": "Go!",
+            "img": ""
+        }
+    ]
+}

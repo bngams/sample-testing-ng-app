@@ -1,0 +1,9 @@
+<form id="team-form">
+  <mat-form-field>
+    <input matInput placeholder="Pays" [(ngModel)]="team.country" name="country" #country (keyup)="onKey(country.value)">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Slogan" [(ngModel)]="team.slogan" name="slogan">
+  </mat-form-field>
+  <button mat-raised-button color="primary" (click)="submit()">OK</button>
+</form>

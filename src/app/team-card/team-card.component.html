@@ -1,0 +1,19 @@
+<mat-card class="example-card">
+  <mat-card-header>
+    <mat-card-title>
+      <h3>{{team.country}}</h3>
+    </mat-card-title>
+  </mat-card-header>
+  <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+  <mat-card-content>
+    <p appHighlight>
+      {{team.slogan | moderation:'STRICT'}}
+    </p>
+    <p *appWarning="(team.slogan.length >= 5)">
+      Too long!
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button>DELETE</button>
+  </mat-card-actions>
+</mat-card>
