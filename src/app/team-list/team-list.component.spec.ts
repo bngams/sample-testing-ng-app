@@ -9,18 +9,19 @@ describe('TeamListComponent', () => {
   let component: TeamListComponent;
   let fixture: ComponentFixture<TeamListComponent>;
   let teamServiceSpy = jasmine.createSpyObj('TeamService', ['getAll']);
+  let getAllSpy: jasmine.Spy;
   const teams = [{ country: 'Fr', slogan: 'go!' }];
 
   beforeEach(() => {
 
-    teamServiceSpy.getAll.and.returnValue(new Promise((resolve, reject) => resolve(teams)));
+    getAllSpy = teamServiceSpy.getAll.and.returnValue(Promise.resolve(teams));
 
     TestBed.configureTestingModule({
       imports: [HttpModule],
       declarations: [TeamListComponent],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
       providers: [
-        { provide: TeamService, usevalue: teamServiceSpy }
+        { provide: TeamService, useValue: teamServiceSpy }
       ]
     });
 
@@ -35,9 +36,11 @@ describe('TeamListComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should get all teams', () => {
-    expect(component).toBeTruthy();
-    component.getAll();
-    expect(component.teams[0]).toEqual(teams[0]);
+  it('should get all teams', (done: DoneFn) => {   
+    getAllSpy.calls.mostRecent().returnValue.then(() => {
+      expect(component.teams).toEqual(teams);
+      done();
+    });
   });
+  
 });
